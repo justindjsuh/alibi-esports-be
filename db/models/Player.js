@@ -2,11 +2,11 @@ const Sequelize = require('sequelize');
 const db = require('../database');
 
 const Player = db.define('player', {
-  first_name: {
+  firstName: {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  last_name: {
+  lastName: {
     type: Sequelize.STRING,
     allowNull: false,
   },
@@ -14,15 +14,13 @@ const Player = db.define('player', {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      is: /^[a-zA-Z0-9_]{3-16}+#+[a-zA-Z0-9_]{3,5}$/,
+      is: /^(.{5,16})#[a-zA-Z0-9]{3,5}/,
     },
   },
   isCaptain: {
-    type: Boolean,
+    type: Sequelize.BOOLEAN,
     allowNull: false,
-  },
-  team: {
-    type: Sequelize.STRING,
+    defaultValue: false,
   },
   rank: {
     type: Sequelize.STRING,

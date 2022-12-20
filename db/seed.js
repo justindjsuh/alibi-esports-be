@@ -2,47 +2,68 @@
 const { db } = require('./');
 const { Player, Team } = require('./');
 
-players = [
+const players = [
   {
-    first_name: 'Ryan',
-    last_name: 'Won',
+    firstName: 'Ryan',
+    lastName: 'Won',
     ign: 'handyice#XSET',
     isCaptain: true,
-    team: 'Founders',
     rank: 'Radiant 2',
     email: 'iamsogood@gmail.com',
     discord: 'rwon#2503',
+    teamName: 'Founders',
   },
   {
-    first_name: 'Justin',
-    last_name: 'Suh',
+    firstName: 'Justin',
+    lastName: 'Suhhh',
     ign: 'choob#12345',
     isCaptain: false,
-    team: 'Founders',
     rank: 'Iron 4',
     email: 'ryanissobad@gmail.com',
     discord: 'jsuh#2503',
+    teamName: 'Founders',
   },
   {
-    first_name: 'Gloria',
-    last_name: 'Choi',
+    firstName: 'Gloria',
+    lastName: 'Choi',
     ign: 'chominnnn#CARRY',
     isCaptain: false,
-    team: 'Founders',
     rank: 'Immortal 3',
     email: 'carry@gmail.com',
     discord: 'gchoi#2503',
+    teamName: 'Founders',
   },
 ];
 
-teams = [{}];
+const teams = [
+  {
+    name: 'Founders',
+  },
+];
 
 const seed = async () => {
   try {
     await db.sync({ force: true });
 
-    await Promise.all();
+    await Promise.all(teams.map((team) => Team.create(team)));
+    await Promise.all(players.map((player) => Player.create(player)));
   } catch (err) {
     console.error(err);
   }
 };
+
+async function runSeed() {
+  try {
+    await seed();
+    console.log('Seeding success!');
+  } catch (err) {
+    console.error('Something went wrong!');
+    console.error(err);
+  } finally {
+    db.close();
+  }
+}
+
+if (require.main === module) {
+  runSeed();
+}

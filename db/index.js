@@ -3,7 +3,7 @@ const Player = require('./models/Player');
 const Team = require('./models/Team');
 
 Player.belongsTo(Team);
-Team.hasMany(Player); // as players?
+Team.hasMany(Player);
 
 module.exports = {
   db,
