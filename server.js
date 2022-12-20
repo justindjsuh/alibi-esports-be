@@ -6,6 +6,7 @@ const { logger } = require('./middleware/logger');
 const errorHandler = require('./middleware/errorHandler');
 const cors = require('cors');
 const corsOptions = require('./config/corsOptions');
+const allowedOrigins = require('./config/allowedOrigins');
 const PORT = process.env.PORT || 3000;
 
 console.log(process.env.NODE_ENV);
@@ -24,7 +25,7 @@ app.use(express.json());
 app.use('/', express.static(path.join(__dirname, 'public')));
 
 // Base route
-app.use('/', require('./routes/root'));
+app.use('/api', require('./api'));
 
 // Error Handler
 app.all('*', (req, res) => {
