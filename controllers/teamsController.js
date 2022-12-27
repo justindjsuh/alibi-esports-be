@@ -45,4 +45,4 @@ const getTeam = asyncHandler(async (req, res) => {
   res.json(team);
 });
 
-module.exports = { getAllTeams, getTeam };
+module.exports = { getAllTeams, getTeam, createNewTeam };
