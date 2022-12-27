@@ -10,7 +10,7 @@ const createNewTeam = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: 'All fields are required' });
   }
 
-  const teamObj = { teamName };
+  const teamObj = { name: teamName };
 
   // Create & Store team
   const team = await Team.create(teamObj);

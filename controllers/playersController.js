@@ -40,11 +40,12 @@ const createNewPlayerCaptain = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: 'All fields are required' });
   }
   const playerObj = {
-    captainFName,
-    captainLName,
-    captainInGameName,
-    captainRank,
-    captainDiscord,
+    firstName: captainFName,
+    lastName: captainLName,
+    ign: captainInGameName,
+    isCaptain: true,
+    rank: captainRank,
+    discord: captainDiscord,
     teamName,
   };
 
@@ -70,10 +71,10 @@ const createNewPlayer2 = asyncHandler(async (req, res) => {
   }
 
   const playerObj = {
-    p2FName,
-    p2LName,
-    p2InGameName,
-    p2Rank,
+    firstName: p2FName,
+    lastName: p2LName,
+    ign: p2InGameName,
+    rank: p2Rank,
     teamName,
   };
 
@@ -82,7 +83,7 @@ const createNewPlayer2 = asyncHandler(async (req, res) => {
 
   // If created
   if (player) {
-    res.status(201).json({ message: `New player ${p2InGameName} created` });
+    res.status(201).json({ message: `New player ${teamName} created` });
   } else {
     res.status(400).json({ message: 'Invalid user data received' });
   }
@@ -97,10 +98,10 @@ const createNewPlayer3 = asyncHandler(async (req, res) => {
   }
 
   const playerObj = {
-    p3FName,
-    p3LName,
-    p3InGameName,
-    p3Rank,
+    firstName: p3FName,
+    lastName: p3LName,
+    ign: p3InGameName,
+    rank: p3Rank,
     teamName,
   };
 
@@ -124,10 +125,10 @@ const createNewPlayer4 = asyncHandler(async (req, res) => {
   }
 
   const playerObj = {
-    p4FName,
-    p4LName,
-    p4InGameName,
-    p4Rank,
+    firstName: p4FName,
+    lastName: p4LName,
+    ign: p4InGameName,
+    rank: p4Rank,
     teamName,
   };
 
@@ -151,10 +152,10 @@ const createNewPlayer5 = asyncHandler(async (req, res) => {
   }
 
   const playerObj = {
-    p5FName,
-    p5LName,
-    p5InGameName,
-    p5Rank,
+    firstName: p5FName,
+    lastName: p5LName,
+    ign: p5InGameName,
+    rank: p5Rank,
     teamName,
   };
 
